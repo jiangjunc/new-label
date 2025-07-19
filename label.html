@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新标签页</title>
+    <link rel="stylesheet" href="./label.css">
+    </link>
+    <style>
+        #rightbtn-box {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            visibility: hidden;
+        }
+
+        #rightbtn-box.show {
+            opacity: 1;
+            transform: scale(1);
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tise-div">
+        <div id="time-div">
+            <div id="time-text">00:00</div>
+            <div id="date-text">00月00日 星期一 零月零零</div>
+        </div>
+        <div id="search-div">
+            <div id="engine-img-div">
+                <img src="./img/engine.svg" id="engine-img">
+            </div>
+            <input type="text" id="search-input" placeholder="搜索" autocomplete="off">
+            <img src="./img/search.svg" id="search-img">
+        </div>
+    </div>
+    <div id="footer-box">
+        <img src="./img/folder-icon.svg" id="folder" class="app-icon">
+        <img src="./img/github-icon.svg" id="github" class="app-icon">
+        <img src="./img/vscode-icon.svg" id="vscode" class="app-icon">
+    </div>
+    <div id="rightbtn-box">
+        <ul>
+            <li id="rig-wallpaper" class="rightbtn"><img src="./img/wallpaper-icon.svg">更换壁纸</li>
+            <li id="rig-setup" class="rightbtn"><img src="./img/setup-icon.svg">设置</li>
+        </ul>
+    </div>
+    <iframe src="./folder-app.html" frameborder="0" class="app-iframe" allowfullscreen></iframe>
+</body>
+<script>
+    async function updateTime() {
+        const now = new Date();
+        const timeText = document.getElementById('time-text');
+        const dateText = document.getElementById('date-text');
+
+        // 格式化时间 HH:MM
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        timeText.textContent = `${hours}:${minutes}`;
+
+        const months = ['1月', '2月', '3月', '4月', '5月', '6月',
+            '7月', '8月', '9月', '10月', '11月', '12月'];
+        const weekdays = ['星期日', '星期一', '星期二', '星期三',
+            '星期四', '星期五', '星期六'];
+        const month = months[now.getMonth()];
+        const date = now.getDate();
+        const weekday = weekdays[now.getDay()];
+
+        try {
+            const response = await fetch(`/api/lunar?date=${now.toISOString()}`);
+            const lunar = await response.json();
+            dateText.textContent = `${month}${date}日 ${weekday} ${lunar.month}${lunar.day}`;
+        } catch (error) {
+            console.error('获取农历数据失败:', error);
+            dateText.textContent = `${month}${date}日 ${weekday}`;
+        }
+    }
+
+    updateTime();
+    setInterval(updateTime, 60000);
+
+    // 添加右键菜单控制功能
+    const rightBtnBox = document.getElementById('rightbtn-box');
+    // 右键显示菜单
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        rightBtnBox.style.left = `${e.clientX}px`;
+        rightBtnBox.style.top = `${e.clientY}px`;
+        rightBtnBox.classList.remove('show');
+        setTimeout(() => {
+            rightBtnBox.classList.add('show');
+        }, 10);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!rightBtnBox.contains(e.target)) {
+            rightBtnBox.classList.remove('show');
+        }
+    });
+</script>
+
+</html>
