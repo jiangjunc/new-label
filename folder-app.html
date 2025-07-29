@@ -1,120 +1,109 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-color: #1d1d20;
-            -webkit-app-region: drag; /* 添加可拖拽区域 */
-            resize: both; /* 允许双向调整大小 */
-            overflow: auto; /* 显示滚动条当内容超出时 */
-            min-width: 300px;
-            min-height: 200px;
-        }
-        #window-controller {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-        }
-        .winapp-btn {
-            width: 18px;
-            height: auto;
-            margin-left: 10px;
-            filter: brightness(0) invert(1);
-            -webkit-app-region: no-drag;
-        }
-        #navigation-div {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 150px;
-            max-width: 300px;
-            width: 20%;
-            height: 100%;
-            background-color: rgb(46,46,50);
-        }
-        #navigation-textbox {
-            width: 100%;
-            height: 50px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 0 10px;
-            overflow: hidden;
-        }
-        #navigation-textbox b {
-            flex-grow: 1;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-shrink: 1;
-        }
-        .navigation-icon {
-            width: 20px;
-            height: auto;
-            filter: brightness(0) invert(1);
-            -webkit-app-region: no-drag;
-        }
-        #navigation-searchbtn-icon {
-            margin-left: 15px;
-        }
-        #navigation-menu-icon {
-            margin-right: 15px;
-        }
-    </style>
-</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        font-family: 'HarmonyOS', sans-serif;
+    }
+    #label-region {
+        width: 100%;
+        height: 36px;
+        background-color: #e6e5ea;
+    }
+    #label-text-div {
+        width: auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 10px;
+    }
+    #label-logo-icon {
+        width: 26px;
+        height: auto;
+    }
+    #Address-box {
+        width: 100%;
+        height: 40px;
+        background-color: #ffffff;
+        border-bottom: 2px solid #f7f7f7;
+        display: flex;
+        align-items: center;
+    }
+    #Address-control-div {
+        width: 85px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: 15px;
+    }
+    #Address-control-div img {
+        width: 20px;
+        height: auto;
+    }
+    #Address-route-div {
+        width: 72%;
+        height: 78%;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+    }
+    #Address-route-text {
+        margin-left: 15px;
+    }
+    #Address-refresh-icon {
+        width: 18px;
+        height: auto;
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    #Address-search-div {
+        width: 20%;
+        height: 78%;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    #Address-search-icon {
+        width: 16px;
+        height: auto;
+        margin-left: 12px;
+    }
+    #Address-search-input {
+        background: none;
+        border: none;
+        outline: none;
+        margin-left: 8px;
+    }
+</style>
 
 <body>
-    <div id="window-controller">
-        <img src="./img/minimize.svg" id="maxi" class="winapp-btn">
-        <img src="./img/maximize.svg" id="mini" class="winapp-btn">
-        <img src="./img/close.svg" id="close" class="winapp-btn">
+    <div id="label-region">
+        <div id="label-text-div">
+            <img id="label-logo-icon" src="./img/folder-icon.svg">
+            <p id="label-text">文件资源管理器</p>
+        </div>
     </div>
-    <div id="navigation-div">
-        <div id="navigation-textbox">
-            <img src="./img/search.svg" id="navigation-searchbtn-icon" class="navigation-icon">
-            <b>文件</b>
-            <img src="./img/menu-icon.svg" id="navigation-menu-icon" class="navigation-icon">
+    <div id="Address-box">
+        <div id="Address-control-div">
+            <img id="Address-arrow-back-icon" src="./img/arrow-back.svg">
+            <img id="Address-arrow-forward-icon" src="./img/arrow-forward.svg">
+            <img id="Address-arrow-up-icon" src="./img/arrow-up.svg">
+        </div>
+        <div id="Address-route-div">
+            <p id="Address-route-text">用户名称 > 本地文件</p>
+            <img id="Address-refresh-icon" src="./img/refresh.svg">
+        </div>
+        <div id="Address-search-div">
+            <img id="Address-search-icon" src="./img/search.svg">
+            <input type="text" id="Address-search-input" placeholder="在 本地文件 中搜索">
         </div>
     </div>
 </body>
-<script>
-    // 窗口控制按钮功能
-    document.getElementById('mini').addEventListener('click', () => {
-        // 最小化窗口
-        if (window.electron) {
-            window.electron.minimize();
-        } else {
-            console.log('最小化窗口');
-        }
-    });
-
-    document.getElementById('maxi').addEventListener('click', () => {
-        // 最大化/还原窗口
-        if (window.electron) {
-            window.electron.maximize();
-        } else {
-            console.log('最大化/还原窗口');
-        }
-    });
-
-    document.getElementById('close').addEventListener('click', () => {
-        // 关闭窗口
-        if (window.electron) {
-            window.electron.close();
-        } else {
-            console.log('关闭窗口');
-        }
-    });
-</script>
-</html>

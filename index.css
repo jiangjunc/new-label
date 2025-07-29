@@ -1,0 +1,93 @@
+body {
+    background-image: url('./img/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+#taskbar {
+    background-color: #131313e3;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100VW;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time {
+    color: #fff;
+    font-family: 'HarmonyOS', sans-serif;
+    margin: 5px;
+}
+
+#menuicon-box {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#setup-icon {
+    width: 20px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+#footer-box {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 50px;
+    width: auto;
+    border: 1px solid rgba(217, 217, 217, .1);
+    backdrop-filter: blur(15px);
+    gap: 13px;
+}
+
+.app-icon-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+}
+
+.app-icon {
+    width: 38px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.app-icon:hover {
+    transform: scale(1.1);
+}
+
+.app-icon-dot {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #0073e5;
+    display: none;
+}
