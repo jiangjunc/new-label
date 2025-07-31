@@ -1,0 +1,24 @@
+{
+    "folder": {
+        "name": "文件资源管理器",
+        "title": "folder",
+        "imgurl": "./img/appicon/folder-icon.svg",
+        "width": 1200,
+        "height": 700,
+        "url": "./folder-app.html",
+        "state": "window",
+        "color": "#191919",
+        "apptype": "native"
+    },
+    "vscode": {
+        "name": "Visual Code",
+        "title": "vscode",
+        "imgurl": "./img/appicon/vscode-icon.svg",
+        "width": 1200,
+        "height": 700,
+        "url": "https://vscode.dev/?vscode-lang=zh-cn",
+        "state": "full",
+        "color": "#191919",
+        "apptype": "web"
+    }
+}

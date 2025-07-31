@@ -1,0 +1,383 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #191919;
+    overflow: hidden;
+}
+
+p {
+    font-family: 'HarmonyOS', sans-serif;
+}
+
+#label-region {
+    width: 100%;
+    height: 36px;
+    background-color: #000c18;
+}
+
+#label-text-div {
+    width: 15%;
+    min-width: 200px;
+    max-width: 240px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+    color: #ffffff;
+    background-color: #1a2126;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    border-radius: 5px 5px 0 0;
+}
+
+#label-logo-icon {
+    width: 26px;
+    height: auto;
+}
+
+#Address-box {
+    width: 100%;
+    height: 40px;
+    background-color: #1a2126;
+    border-bottom: 2px solid #2b2c2c;
+    display: flex;
+    align-items: center;
+}
+
+#Address-control-div {
+    width: 85px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 15px;
+}
+
+#Address-control-div img {
+    width: 20px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+#Address-route-div {
+    width: 68%;
+    height: 78%;
+    background-color: #272e32;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#Address-route-text {
+    margin-left: 15px;
+    color: #ffffff;
+}
+
+#Address-refresh-icon {
+    width: 18px;
+    height: auto;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+#Address-search-div {
+    width: 20%;
+    height: 78%;
+    background-color: #272e32;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+#Address-search-icon {
+    width: 16px;
+    height: auto;
+    margin-left: 12px;
+}
+
+#Address-search-input {
+    background: none;
+    border: none;
+    outline: none;
+    margin-left: 8px;
+}
+
+#window-controller {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 5px;
+}
+
+.winapp-btn {
+    width: 18px;
+    cursor: pointer;
+}
+
+#NavigationPane {
+    width: 200px;
+    height: calc(100% - 116px);
+    background-color: #191919;
+    border-right: 2px solid #2b2c2c;
+    position: absolute;
+    top: 120px;
+}
+
+#FunctionBar {
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid #2b2c2c;
+    display: flex;
+    align-items: center;
+}
+
+#newbuiltBtn-box {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    margin-left: 25px;
+    gap: 5px;
+    font-size: 16px;
+}
+
+#newbuiltBtn-icon {
+    width: 16px;
+    height: auto;
+}
+
+#functionBtn-box {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    gap: 30px;
+    border-left: 1px solid #2b2c2c;
+    padding-left: 20px;
+}
+
+.functionBtn-icon {
+    width: 20px;
+    height: auto;
+}
+
+#detailedInformationBtn-box {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.NavigationLabel-box {
+    width: calc(100% - 6px);
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    margin: 10px auto;
+    color: #e0e0e0;
+    font-size: 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+}
+
+.NavigationLabel-box:hover {
+    background-color: #333333;
+    transform: translateY(1px);
+}
+
+.NavigationRegion-icon {
+    width: 22px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#homeFolder-box {
+    background-color: #333333;
+    margin-top: 5px;
+}
+
+.NavigationRegion-box {
+    width: 100%;
+    margin-top: 8px;
+    position: relative;
+    border-bottom: none;
+}
+
+.NavigationRegion-box::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    width: 92%;
+    height: 1.4px;
+    background-color: #2b2c2c;
+    transform: translateX(-50%);
+}
+
+.NavigationRegion-box:nth-of-type(n+2) {
+    margin-top: 35px;
+}
+
+#mainArea {
+    width: calc(100% - 198px);
+    height: calc(100% - 117px);
+    position: absolute;
+    top: 121px;
+    left: 202px;
+    overflow-y: auto;
+}
+
+#storageCard {
+    width: 94%;
+    margin: 16px auto;
+    padding: 18px 20px;
+    background-color: #272e32;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#storageCard p:first-child {
+    margin: 0 0 6px 0;
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
+}
+
+#storageCard p:nth-child(2) {
+    margin: 0 12px 10px 0;
+    font-size: 14px;
+    color: #b0b0b0;
+}
+
+#storageCard p:nth-child(3) {
+    margin: 0 8px 10px auto;
+    font-size: 14px;
+    color: #b0b0b0;
+}
+
+#storageCard progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    appearance: none;
+}
+
+#storageCard progress::-webkit-progress-bar {
+    background-color: #191919;
+    border-radius: 3px;
+}
+
+#storageCard progress::-webkit-progress-value {
+    background-color: #0073e5;
+    border-radius: 3px;
+}
+
+.quickAccessFile-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    margin: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.quickAccessFile-div:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+.quickAccessFile-div img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+}
+
+
+.quickAccessFile-div p:last-of-type {
+    font-size: 11px;
+    color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+#quickAccess-box {
+    width: calc(94% - 18px);
+    height: 100px;
+    color: #e0e0e0;
+    margin: 20px auto;
+    padding-left: 18px;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#folderPage-div {
+    width: 100%;
+    height: 100%;
+    background-color: #191919;
+    width: calc(100% - 198px);
+    height: calc(100% - 117px);
+    position: absolute;
+    top: 121px;
+    left: 202px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 100px;
+    margin: 0;
+    margin-top: 10px;
+    display: none;
+}
+
+#PersonalCard-box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background-color: #272e32;
+    border-top: 1px solid #3a3f43;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    box-sizing: border-box;
+    gap: 8px;
+}
+
+#PersonalCard-box img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#PersonalCard-box b {
+    font-size: 13px;
+    color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

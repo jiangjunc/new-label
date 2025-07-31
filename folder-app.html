@@ -1,93 +1,12 @@
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    p {
-        font-family: 'HarmonyOS', sans-serif;
-    }
-    #label-region {
-        width: 100%;
-        height: 36px;
-        background-color: #e6e5ea;
-    }
-    #label-text-div {
-        width: auto;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-left: 10px;
-    }
-    #label-logo-icon {
-        width: 26px;
-        height: auto;
-    }
-    #Address-box {
-        width: 100%;
-        height: 40px;
-        background-color: #ffffff;
-        border-bottom: 2px solid #f7f7f7;
-        display: flex;
-        align-items: center;
-    }
-    #Address-control-div {
-        width: 85px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-left: 15px;
-    }
-    #Address-control-div img {
-        width: 20px;
-        height: auto;
-    }
-    #Address-route-div {
-        width: 72%;
-        height: 78%;
-        background-color: #f3f3f3;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        margin-left: 20px;
-    }
-    #Address-route-text {
-        margin-left: 15px;
-    }
-    #Address-refresh-icon {
-        width: 18px;
-        height: auto;
-        margin-left: auto;
-        margin-right: 10px;
-    }
-    #Address-search-div {
-        width: 20%;
-        height: 78%;
-        background-color: #f3f3f3;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        margin-left: auto;
-        margin-right: 20px;
-    }
-    #Address-search-icon {
-        width: 16px;
-        height: auto;
-        margin-left: 12px;
-    }
-    #Address-search-input {
-        background: none;
-        border: none;
-        outline: none;
-        margin-left: 8px;
-    }
-</style>
+<head>
+    <link rel="stylesheet" href="./folder-app.css">
+    <script src="./folder-app.js"></script>
+</head>
 
 <body>
     <div id="label-region">
         <div id="label-text-div">
-            <img id="label-logo-icon" src="./img/folder-icon.svg">
+            <img id="label-logo-icon" src="./img/appicon/folder-icon.svg">
             <p id="label-text">文件资源管理器</p>
         </div>
     </div>
@@ -104,6 +23,103 @@
         <div id="Address-search-div">
             <img id="Address-search-icon" src="./img/search.svg">
             <input type="text" id="Address-search-input" placeholder="在 本地文件 中搜索">
+        </div>
+    </div>
+    <div id="FunctionBar">
+        <div id="newbuiltBtn-box">
+            <img id="newbuiltBtn-icon" src="./img/newbuilt-icon.svg">
+            <p>新建</p>
+        </div>
+        <div id="functionBtn-box">
+            <img id="functionBtn-upload-icon" src="./img/upload-icon.svg" class="functionBtn-icon">
+            <img id="functionBtn-rename-icon" src="./img/rename-icon.svg" class="functionBtn-icon">
+            <img id="functionBtn-share-icon" src="./img/share-icon.svg" class="functionBtn-icon">
+            <img id="functionBtn-delete-icon" src="./img/delete-icon.svg" class="functionBtn-icon">
+        </div>
+        <div id="detailedInformationBtn-box">
+            <img id="detailedInformationBtn-icon" src="./img/information-icon.svg" class="functionBtn-icon">
+            <p>详细信息</p>
+        </div>
+    </div>
+    <div id="NavigationPane">
+        <div class="NavigationRegion-box">
+            <div id="homeFolder-box" class="NavigationLabel-box">
+                <img id="homeFolder-icon" src="./img/shouye.svg" class="NavigationRegion-icon">
+                <p class="NavigationRegion-text">主文件夹</p>
+            </div>
+            <div id="transmission-box" class="NavigationLabel-box">
+                <img id="transmission-icon" src="./img/transmission.svg" class="NavigationRegion-icon"
+                    style="margin-top: 2px;">
+                <p class="NavigationRegion-text">下载与传输</p>
+            </div>
+        </div>
+        <div class="NavigationRegion-box">
+            <div id="desktop-box" class="NavigationLabel-box">
+                <img id="desktop-icon" src="./img/desktop.svg" class="NavigationRegion-icon">
+                <p class="NavigationRegion-text">桌面</p>
+            </div>
+            <div id="picture-box" class="NavigationLabel-box">
+                <img id="picture-icon" src="./img/picture.svg" class="NavigationRegion-icon" style="margin-top: 2px;">
+                <p class="NavigationRegion-text">图片</p>
+            </div>
+            <div id="code-box" class="NavigationLabel-box">
+                <img id="code-icon" src="./img/code.svg" class="NavigationRegion-icon" style="margin-top: 3px;">
+                <p class="NavigationRegion-text">代码</p>
+            </div>
+            <div id="file-box" class="NavigationLabel-box">
+                <img id="file-icon" src="./img/file.svg" class="NavigationRegion-icon">
+                <p class="NavigationRegion-text">文件</p>
+            </div>
+        </div>
+        <div id="PersonalCard-box">
+            <img src="./img/ExampleAvatar.png">
+            <b>待登陆</b>
+        </div>
+    </div>
+    <div id="mainArea">
+        <div id="homeFolderPage-box">
+            <div id="storageCard">
+                <p>网盘存储空间</p>
+                <p>已用空间: 00.00MB/00.00MB</p>
+                <p>个人已用空间: 00.00MB</p>
+                <progress value="50" max="100"></progress>
+            </div>
+            <div id="quickAccess-box">
+                <div id="quickAccessFile-desktop-box" class="quickAccessFile-div">
+                    <img src="./img/folder-icon.svg">
+                    <p>桌面</p>
+                </div>
+                <div id="quickAccessFile-picture-box" class="quickAccessFile-div">
+                    <img src="./img/folder-icon.svg">
+                    <p>图片</p>
+                </div>
+                <div id="quickAccessFile-code-box" class="quickAccessFile-div">
+                    <img src="./img/folder-icon.svg">
+                    <p>代码</p>
+                </div>
+                <div id="quickAccessFile-file-box" class="quickAccessFile-div">
+                    <img src="./img/folder-icon.svg">
+                    <p>文件</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="folderPage-div">
+        <div id="quickAccessFile-desktop-box" class="quickAccessFile-div">
+            <img src="./img/folder-icon.svg">
+            <p>桌面</p>
+        </div>
+        <div id="quickAccessFile-picture-box" class="quickAccessFile-div">
+            <img src="./img/folder-icon.svg">
+            <p>图片</p>
+        </div>
+        <div id="quickAccessFile-code-box" class="quickAccessFile-div">
+            <img src="./img/folder-icon.svg">
+            <p>代码</p>
+        </div>
+        <div id="quickAccessFile-file-box" class="quickAccessFile-div">
+            <img src="./img/folder-icon.svg">
+            <p>文件</p>
         </div>
     </div>
 </body>
